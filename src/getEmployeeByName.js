@@ -4,7 +4,7 @@ const getEmployeeByName = (employeeName) => {
   if (!employeeName) return {};
 
   const foundEmployee = data.employees.filter(({ firstName, lastName }) =>
-    employeeName.includes(lastName) || employeeName.includes(firstName));
+    employeeName.includes(firstName) || employeeName.includes(lastName));
 
   const obj = foundEmployee.reduce((acc, emp) => {
     let objAcc = acc;
