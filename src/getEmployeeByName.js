@@ -1,7 +1,24 @@
 const data = require('../data/zoo_data');
 
 const getEmployeeByName = (employeeName) => {
-  // seu código aqui
+  if (!employeeName) return {};
+
+  const foundEmployee = data.employees.filter(({ firstName, lastName }) =>
+    employeeName.includes(lastName) || employeeName.includes(firstName));
+
+  const obj = foundEmployee.reduce((acc, emp) => {
+    let objAcc = acc;
+    objAcc = {
+      id: emp.id,
+      firstName: emp.firstName,
+      lastName: emp.lastName,
+      managers: emp.managers,
+      responsibleFor: emp.responsibleFor,
+    };
+    return objAcc;
+  }, {});
+
+  return obj;
 };
 
 module.exports = getEmployeeByName;
